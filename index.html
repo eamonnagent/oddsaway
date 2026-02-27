@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OddsAway — Travel for the Game. Stay for the Odds.</title>
+  <meta name="description" content="OddsAway is your guide to the world's best sports betting destinations. Casino holidays, event travel, and betting guides across Europe." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://oddsaway.co/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OddsAway — Travel for the Game. Stay for the Odds." />
+  <meta property="og:description" content="Your guide to Europe's best sports betting destinations — casino holidays, Champions League travel, and betting guides." />
+  <meta property="og:url" content="https://oddsaway.co/" />
+  <meta property="og:site_name" content="OddsAway" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--white); }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-family: sans-serif;
+      font-size: 0.9rem;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0; right: 0;
+        background: var(--navy);
+        border-bottom: 1px solid rgba(201,168,76,0.2);
+        padding: 1rem 2rem;
+        z-index: 100;
+      }
+      .nav-links.open { display: flex; flex-direction: column; gap: 0.75rem; }
+      .nav-links a { margin-left: 0; font-size: 1rem; }
+      nav { position: relative; }
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* EMAIL CAPTURE */
+    .capture-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 440px;
+      margin: 0 auto 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .capture-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.8rem 1.1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .capture-form input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+    .capture-form input[type="email"]:focus { border-color: var(--gold); }
+
+    .btn-primary {
+      padding: 0.8rem 1.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      font-family: sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); }
+
+    .hero-fine {
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* SECTION */
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      max-width: 640px;
+      margin-bottom: 3rem;
+    }
+
+    /* PILLARS */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.2s;
+    }
+
+    .pillar:hover { border-color: rgba(201,168,76,0.35); }
+
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .pillar h3 {
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar p {
+      font-family: sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.5;
+    }
+
+    /* DESTINATIONS */
+    .destinations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .dest-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .dest-card:hover {
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.4);
+    }
+
+    .dest-flag { font-size: 1.5rem; }
+
+    .dest-info { flex: 1; }
+
+    .dest-name {
+      font-family: sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .dest-tag {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .dest-arrow {
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 1rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin: 0 2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.28);
+    }
+
+    footer p { margin-bottom: 0.4rem; }
+
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">Odds<span>Away</span></a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <div class="nav-links">
+      <a href="/articles/">Articles</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-badge">🎰 Betting Travel Guides</span>
+    <h1>Travel for the Game.<br /><em>Stay for the Odds.</em></h1>
+    <p>OddsAway is your guide to Europe's best sports betting destinations — from Champions League weekends to casino resorts. Plan smarter. Bet better. Go further.</p>
+
+    <form class="capture-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit" class="btn-primary">Get the Free Guide →</button>
+    </form>
+    <p class="hero-fine">Your first destination guide, free. No spam, ever. 18+</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PILLARS -->
+  <section>
+    <p class="section-label">What We Cover</p>
+    <h2>Where the odds are in your favour</h2>
+    <p class="section-intro">You love sport. You love travel. You love a bet. OddsAway brings it all together.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🏆</span>
+        <h3>Event Travel Guides</h3>
+        <p>Champions League. Formula 1. Six Nations. Ryder Cup. We map out the best places to be — and bet — for the world's biggest events.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🎰</span>
+        <h3>Casino Destination Reviews</h3>
+        <p>Monte Carlo. Malta. Macau. In-depth guides to the best casino destinations, with honest reviews of what's worth your time.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📋</span>
+        <h3>Betting Legality by Country</h3>
+        <p>Know before you go. A country-by-country breakdown of where sports betting is legal, regulated, and worth doing on holiday.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- DESTINATIONS -->
+  <section>
+    <p class="section-label">Featured Destinations</p>
+    <h2>Where are you headed?</h2>
+    <p class="section-intro">Pick a destination and we'll tell you everything you need to know — casinos, events, legal status, and where to stay.</p>
+
+    <div class="destinations">
+      <a href="/articles/best-european-cities-casino-holiday.html" class="dest-card">
+        <span class="dest-flag">🇲🇨</span>
+        <div class="dest-info">
+          <div class="dest-name">Monte Carlo</div>
+          <div class="dest-tag">Casino & Grand Prix</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="#" class="dest-card">
+        <span class="dest-flag">🇲🇹</span>
+        <div class="dest-info">
+          <div class="dest-name">Malta</div>
+          <div class="dest-tag">Europe's Gaming Capital</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="#" class="dest-card">
+        <span class="dest-flag">🇬🇧</span>
+        <div class="dest-info">
+          <div class="dest-name">London</div>
+          <div class="dest-tag">Cheltenham & Ascot</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="#" class="dest-card">
+        <span class="dest-flag">🇪🇸</span>
+        <div class="dest-info">
+          <div class="dest-name">Barcelona</div>
+          <div class="dest-tag">Football & Waterfront Casino</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="#" class="dest-card">
+        <span class="dest-flag">🇫🇷</span>
+        <div class="dest-info">
+          <div class="dest-name">Deauville</div>
+          <div class="dest-tag">Horse Racing & Elegance</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="#" class="dest-card">
+        <span class="dest-flag">🇦🇹</span>
+        <div class="dest-info">
+          <div class="dest-name">Vienna</div>
+          <div class="dest-tag">Hidden Gem Poker Scene</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+      <a href="/articles/champions-league-final-budapest-2026.html" class="dest-card">
+        <span class="dest-flag">🇭🇺</span>
+        <div class="dest-info">
+          <div class="dest-name">Budapest</div>
+          <div class="dest-tag">UCL Final 2026 · May 30</div>
+        </div>
+        <span class="dest-arrow">›</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- LATEST ARTICLES -->
+  <section>
+    <p class="section-label">Latest Articles</p>
+    <h2>Read the guides</h2>
+    <p class="section-intro">Deep-dive destination guides and event travel tips for the sports bettor on holiday.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem;">
+      <a href="/articles/champions-league-final-budapest-2026.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.5rem;transition:all 0.2s;">
+        <span style="font-size:0.7rem;font-family:sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">🏆 Event Travel</span>
+        <h3 style="font-size:1.1rem;color:var(--white);line-height:1.3;">Champions League Final Budapest 2026 — The Sports Bettor's Travel Guide</h3>
+        <p style="font-family:sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.5;flex:1;">Puskás Arena, May 30. Where to stay, where to bet, and how to make a weekend of it in Budapest.</p>
+        <span style="font-family:sans-serif;font-size:0.82rem;font-weight:600;color:var(--gold);">Read guide →</span>
+      </a>
+      <a href="/articles/best-european-cities-casino-holiday.html" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.5rem;transition:all 0.2s;">
+        <span style="font-size:0.7rem;font-family:sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">🎰 Casino Destinations</span>
+        <h3 style="font-size:1.1rem;color:var(--white);line-height:1.3;">Best European Cities for a Casino Holiday (2026 Guide)</h3>
+        <p style="font-family:sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.5;flex:1;">Monte Carlo, Malta, London, Vienna, Barcelona — Europe's top casino destinations ranked and reviewed.</p>
+        <span style="font-family:sans-serif;font-size:0.82rem;font-weight:600;color:var(--gold);">Read guide →</span>
+      </a>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="/articles/" style="display:inline-block;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:var(--gold);font-family:sans-serif;font-size:0.88rem;font-weight:600;padding:0.65rem 1.4rem;border-radius:6px;text-decoration:none;">Browse all articles →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 OddsAway. Travel with purpose. Bet with knowledge.</p>
+    <p>
+      <a href="/articles/">Articles</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+    </p>
+    <p style="margin-top:0.75rem;">18+ only. Please gamble responsibly. OddsAway may earn commission from affiliate partners. This never affects our editorial independence.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ You\'re on the list!';
+      btn.style.background = '#3d9970';
+      btn.disabled = true;
+      // TODO: connect to Mailchimp / ConvertKit API
+    }
+
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles — Travel Guides, Betting Tips &amp; Casino Destinations | OddsAway</title>
+  <meta name="description" content="OddsAway articles: casino destination guides, event travel for Champions League and more, betting legality by country, and expert tips for the sports bettor on holiday." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://oddsaway.co/articles/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Articles — OddsAway Travel Guides &amp; Betting Destinations" />
+  <meta property="og:description" content="Casino destination guides, event travel for Champions League and more, betting legality by country, and expert tips for the sports bettor on holiday." />
+  <meta property="og:url" content="https://oddsaway.co/articles/" />
+  <meta property="og:site_name" content="OddsAway" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --muted: #6b7280;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--white); }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-family: sans-serif;
+      font-size: 0.9rem;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0; right: 0;
+        background: var(--navy);
+        border-bottom: 1px solid rgba(201,168,76,0.2);
+        padding: 1rem 2rem;
+        z-index: 100;
+      }
+      .nav-links.open { display: flex; flex-direction: column; gap: 0.75rem; }
+      .nav-links a { margin-left: 0; font-size: 1rem; }
+      nav { position: relative; }
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      max-width: 860px;
+      margin: 3.5rem auto 0;
+      padding: 0 2rem 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .section-label {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .page-header p {
+      font-family: sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+    }
+
+    /* CATEGORIES */
+    .filter-bar {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tag {
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .filter-tag:hover, .filter-tag.active {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ARTICLES GRID */
+    .articles-grid {
+      max-width: 860px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ARTICLE CARD */
+    .article-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.2s;
+    }
+
+    .article-card:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-2px);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .article-card h2 {
+      font-size: 1.2rem;
+      color: var(--white);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .card-excerpt {
+      font-family: sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: sans-serif;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.25rem;
+    }
+
+    .card-read-more {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    /* FEATURED card (spans 2 columns) */
+    .article-card.featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .featured-icon {
+      font-size: 3.5rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .featured-content { flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+    @media (max-width: 560px) {
+      .article-card.featured {
+        flex-direction: column;
+      }
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* COMING SOON card */
+    .article-card.coming-soon {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .soon-label {
+      font-family: sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.06);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.28);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    footer p { margin-bottom: 0.4rem; }
+
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">Odds<span>Away</span></a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <div class="nav-links">
+      <a href="/articles/" class="active">Articles</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="section-label">OddsAway Editorial</p>
+    <h1>Guides, Destinations &amp; Event Travel</h1>
+    <p>Deep-dive guides for the sports bettor who travels — casino cities, major events, and everything you need to know before you go.</p>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-tag active">All Articles</span>
+    <span class="filter-tag">🎰 Casino Destinations</span>
+    <span class="filter-tag">🏆 Event Travel</span>
+    <span class="filter-tag">📋 Betting Guides</span>
+  </div>
+
+  <!-- ARTICLES GRID -->
+  <div class="articles-grid">
+
+    <!-- FEATURED: UCL Budapest -->
+    <a href="/articles/champions-league-final-budapest-2026.html" class="article-card featured">
+      <div class="featured-icon">🏆</div>
+      <div class="featured-content">
+        <span class="card-badge">🔥 Event Travel · Featured</span>
+        <h2>Champions League Final Budapest 2026 — The Sports Bettor's Travel Guide</h2>
+        <p class="card-excerpt">Everything you need for the UCL Final at Puskás Arena on May 30, 2026 — where to stay, where to bet, Budapest casinos, a 4-day itinerary, and practical travel info. Book now before prices spike.</p>
+        <div class="card-meta">
+          <span>🗓 Updated Feb 2026 · ~7 min read</span>
+          <span class="card-read-more">Read guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Casino Cities -->
+    <a href="/articles/best-european-cities-casino-holiday.html" class="article-card">
+      <span class="card-badge">🎰 Casino Destinations</span>
+      <h2>Best European Cities for a Casino Holiday (2026 Guide)</h2>
+      <p class="card-excerpt">Monte Carlo, Malta, London, Vienna, Barcelona, Deauville — Europe's top casino destinations ranked and reviewed. Where to go, what to play, and what to know.</p>
+      <div class="card-meta">
+        <span>🗓 Feb 2026 · ~8 min read</span>
+        <span class="card-read-more">Read guide →</span>
+      </div>
+    </a>
+
+    <!-- Coming Soon: Formula 1 Monaco -->
+    <div class="article-card coming-soon">
+      <span class="soon-label">Coming Soon</span>
+      <h2>Formula 1 Monaco Grand Prix — Betting &amp; Travel Guide</h2>
+      <p class="card-excerpt">The most glamorous race on the calendar — how to be there, what to bet, and where to stay in and around Monaco for race weekend.</p>
+      <div class="card-meta">
+        <span>🏎 F1 · Event Travel</span>
+      </div>
+    </div>
+
+    <!-- Coming Soon: Malta Casino Guide -->
+    <div class="article-card coming-soon">
+      <span class="soon-label">Coming Soon</span>
+      <h2>Malta Casino Guide: Dragonara, Portomaso &amp; More</h2>
+      <p class="card-excerpt">A deep-dive into Malta's casino scene — the best venues, what to play, MGA licensing explained, and how to combine casino time with a sun holiday.</p>
+      <div class="card-meta">
+        <span>🇲🇹 Casino · Malta</span>
+      </div>
+    </div>
+
+    <!-- Coming Soon: Cheltenham -->
+    <div class="article-card coming-soon">
+      <span class="soon-label">Coming Soon</span>
+      <h2>Cheltenham Festival 2026 — Betting Guide &amp; Travel Tips</h2>
+      <p class="card-excerpt">Four days of world-class National Hunt racing in the Cotswolds. Everything you need to know to attend, bet smart, and get the most out of Festival week.</p>
+      <div class="card-meta">
+        <span>🐎 Horse Racing · UK</span>
+      </div>
+    </div>
+
+    <!-- Coming Soon: Legal by country -->
+    <div class="article-card coming-soon">
+      <span class="soon-label">Coming Soon</span>
+      <h2>Sports Betting Legality in Europe — Country-by-Country Guide</h2>
+      <p class="card-excerpt">A plain-English breakdown of where sports betting is legal, regulated, and worth doing on holiday — covering all major European destinations.</p>
+      <div class="card-meta">
+        <span>📋 Betting Guide</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 OddsAway. Travel with purpose. Bet with knowledge.</p>
+    <p>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/responsible-gambling.html">Responsible Gambling</a>
+    </p>
+    <p style="margin-top:0.75rem;">18+ only. Please gamble responsibly. OddsAway may earn commission from affiliate partners. This never affects our editorial independence.</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('open'));
+    }
+  </script>
+
+</body>
+</html>
