@@ -333,10 +333,11 @@
     <h1>Travel for the Game.<br /><em>Stay for the Odds.</em></h1>
     <p>OddsAway is your guide to Europe's best sports betting destinations — from Champions League weekends to casino resorts. Plan smarter. Bet better. Go further.</p>
 
-    <form class="capture-form" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="your@email.com" required />
-      <button type="submit" class="btn-primary">Get the Free Guide →</button>
+    <form class="capture-form" id="emailForm" onsubmit="handleSubmit(event)">
+      <input type="email" id="emailInput" placeholder="your@email.com" required />
+      <button type="submit" class="btn-primary" id="submitBtn">Get the Free Guide →</button>
     </form>
+    <div id="formMessage" style="display:none;max-width:440px;margin:0 auto 0.5rem;padding:0.7rem 1rem;border-radius:6px;font-family:sans-serif;font-size:0.9rem;text-align:center;"></div>
     <p class="hero-fine">Your first destination guide, free. No spam, ever. 18+</p>
   </div>
 
@@ -474,13 +475,66 @@
   </footer>
 
   <script>
-    function handleSubmit(e) {
+    const WORKER_URL = 'https://oddsaway.eamonn-agent.workers.dev/subscribe';
+
+    async function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = '✓ You\'re on the list!';
-      btn.style.background = '#3d9970';
+
+      const form    = document.getElementById('emailForm');
+      const input   = document.getElementById('emailInput');
+      const btn     = document.getElementById('submitBtn');
+      const msgBox  = document.getElementById('formMessage');
+      const email   = input.value.trim();
+
+      // Loading state
       btn.disabled = true;
-      // TODO: connect to Mailchimp / ConvertKit API
+      btn.textContent = 'Sending…';
+      msgBox.style.display = 'none';
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          // Success UI
+          btn.textContent = '✓ You\'re on the list!';
+          btn.style.background = '#3d9970';
+          input.style.display = 'none';
+          showMessage(data.message || 'You\'re on the list!', 'success');
+        } else {
+          // API-level error (e.g. validation)
+          btn.textContent = 'Get the Free Guide →';
+          btn.disabled = false;
+          btn.style.background = '';
+          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+        }
+      } catch (err) {
+        // Network error
+        btn.textContent = 'Get the Free Guide →';
+        btn.disabled = false;
+        btn.style.background = '';
+        showMessage('Network error — please check your connection and try again.', 'error');
+      }
+    }
+
+    function showMessage(text, type) {
+      const msgBox = document.getElementById('formMessage');
+      msgBox.textContent = text;
+      if (type === 'success') {
+        msgBox.style.background  = 'rgba(61,153,112,0.15)';
+        msgBox.style.border      = '1px solid rgba(61,153,112,0.5)';
+        msgBox.style.color       = '#6ee7b7';
+      } else {
+        msgBox.style.background  = 'rgba(239,68,68,0.12)';
+        msgBox.style.border      = '1px solid rgba(239,68,68,0.4)';
+        msgBox.style.color       = '#fca5a5';
+      }
+      msgBox.style.display = 'block';
     }
 
     // Mobile nav toggle

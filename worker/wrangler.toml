@@ -1,0 +1,9 @@
+name = "oddsaway"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+account_id = "2af87878b0e33cdd525be047ead54b02"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "oddsaway-emails"
+database_id = "cd9db852-9e41-47f1-8e5d-1709f95d07af"
